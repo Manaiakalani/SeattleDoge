@@ -13,4 +13,18 @@ function randomizeTurbulence() {
 randomizeTurbulence();
 
 // Optional: Randomize on an interval
-setInterval(randomizeTurbulence, 3600000); // Change every 5 seconds
+setInterval(randomizeTurbulence, 3600000); // Change every hour
+
+// Doge ASCII Art Console Log
+console.log(`
+             ██▄▄▄▄▄▄▄▄▄   
+            ▒▒▒▒▒▒▒▒▒▒▓██  
+           ▀▀▒▒▒▀▀▒▒▒▓▓▓▓█ 
+         ▄▄▄▒▒░    ░░▒▒▒▓█ 
+         ▀▀▀▒▄▄▄   ░░▒▒▒▓█ 
+           █▄░   ░░▒▒▒▒▓▓█ 
+            ▀█▄▄▄▄▄▄▄▄▄▀▀  
+        such art
+        much console
+        wow
+`);
