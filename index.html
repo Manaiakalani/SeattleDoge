@@ -34,23 +34,13 @@
     <meta name="keywords" content="Seattle, doge, city vibe, Emerald City"/>
     <meta name="author" content="Emerald Designs"/>
     <title>Seattle Doge - Experience the Emerald City</title>
-    <link rel="icon" href="/favicon.ico"/>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css"/>
-    <script>
-        console.log(`
-             ██▄▄▄▄▄▄▄▄▄   
-            ▒▒▒▒▒▒▒▒▒▒▓██  
-           ▀▀▒▒▒▀▀▒▒▒▓▓▓▓█ 
-         ▄▄▄▒▒░    ░░▒▒▒▓█ 
-         ▀▀▀▒▄▄▄   ░░▒▒▒▓█ 
-           █▄░   ░░▒▒▒▒▓▓█ 
-            ▀█▄▄▄▄▄▄▄▄▄▀▀  
-        such art
-        much console
-        wow
-        `);
-    </script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="app" class="container">
@@ -63,7 +53,12 @@
 
     <footer class="footer">
         <div class="social-media">
-            <a href="https://aka.ms/MaxStein" class="social-link">Twitter</a>
+            <a href="https://aka.ms/MaxStein" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://linkedin.com/in/manaiakalani" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
         </div>
         <p class="footer-text">© 2025 Seattle Doge.</p>
     </footer>
@@ -113,7 +108,5 @@
             </filter>
         </defs>
     </svg>
-
-    <script src="script.js"></script>
 </body>
 </html>
