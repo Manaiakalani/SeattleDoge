@@ -50,19 +50,14 @@ body, html {
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s infinite ease-in-out;
+    background-size: 200% 200%;
 }
 
-.gradient-description {
-    font-size: 1.8rem;
-    font-weight: 300;
-    margin: 0;
-    background: -webkit-linear-gradient(
-        left,
-        #64C9CF,
-        #BDC3C7
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Topography Styles */
@@ -118,6 +113,6 @@ body, html {
 
 .footer .footer-text {
     font-size: 0.9rem;
-    margin: 0;
+    margin: 5px 0;
     color: rgba(255, 255, 255, 0.8);
 }
