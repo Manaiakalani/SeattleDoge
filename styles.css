@@ -1,4 +1,47 @@
-/* Global Styles */
+/* 
+ * SeattleDoge Styles 🐕
+ * such CSS, much aesthetic, very modern
+ * Gen-Z approved styling with Seattle vibes
+ */
+
+/* Performance optimizations */
+* {
+    box-sizing: border-box;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode preference (already dark but respecting user choice) */
+@media (prefers-color-scheme: light) {
+    :root {
+        --accent-color: #FF6F61;
+        --secondary-color: #0F4C81;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .gradient-text {
+        background: linear-gradient(to right, #FF0000, #0000FF);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+}
+
+/* Focus improvements for accessibility */
+button:focus, a:focus, [tabindex]:focus {
+    outline: 2px solid #ffeb3b;
+    outline-offset: 2px;
+}
+
+/* Global Styles - keeping it fresh */
 body, html {
     margin: 0;
     padding: 0;
@@ -12,18 +55,32 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><text y="16" font-size="16">🐕</text></svg>'), auto;
+    overflow-x: hidden;
 }
 
-/* Main Container */
+/* Main Container - responsive and clean */
 .container {
     padding-left: 10%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     text-align: left;
     max-width: 600px;
     position: relative;
     z-index: 2;
+    animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* Header Styles */
@@ -38,6 +95,68 @@ body, html {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header .title:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Interaction hints - Gen-Z loves interactive elements */
+.interaction-hint {
+    margin-top: 10px;
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+.hint-text {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #ffeb3b;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Easter egg counter - gamification element */
+.easter-egg-counter {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.easter-egg-counter.show {
+    opacity: 1;
+}
+
+/* Coffee counter easter egg */
+.easter-egg-trigger {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.easter-egg-trigger:hover {
+    color: #ffeb3b;
+    transform: scale(1.1);
 }
 
 .gradient-text {
@@ -48,10 +167,26 @@ body, html {
         #939597,
         #6667AB
     );
+    background: linear-gradient(
+        to right,
+        #FF6F61,
+        #0F4C81,
+        #939597,
+        #6667AB
+    );
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
     animation: gradient-shift 6s infinite ease-in-out;
     background-size: 200% 200%;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.gradient-text:hover {
+    animation-duration: 2s;
+    transform: scale(1.02);
 }
 
 @keyframes gradient-shift {
@@ -103,12 +238,88 @@ body, html {
     text-decoration: none;
     font-weight: 500;
     font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .footer .social-link:hover {
     color: #ff9800;
     transform: scale(1.1);
+}
+
+.footer .social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.footer .social-link:hover::before {
+    left: 100%;
+}
+
+/* Bounce animation for social links */
+.bounce-on-hover:hover {
+    animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1.1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+}
+
+/* Tooltip styles for social links */
+.social-link[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Responsive design for mobile Gen-Z users */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .header .title {
+        font-size: 3.5rem;
+    }
+    
+    .easter-egg-counter {
+        top: 10px;
+        right: 10px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+    
+    .footer .social-media {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .title {
+        font-size: 2.8rem;
+    }
+    
+    .interaction-hint {
+        font-size: 0.8rem;
+    }
 }
 
 .footer .footer-text {
