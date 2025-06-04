@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- 
+    SeattleDoge ASCII Art Easter Egg 🐕
+    such hidden, much surprise, very aesthetic
+    
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⠋⠈⠙⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⢤⡀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠈⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠞⠀⠀⢠⡜⣦⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡃⠀⠀⠀⠀⠈⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⣠⠀⠀⠀⠀⢻⡘⡇
@@ -26,44 +29,59 @@
 ⠀⠀⠀⠀⠱⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡴⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠛⢦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⠴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠲⠤⣤⣤⣤⣄⠀⠀⠀⠀⠀⠀⠀⢠⣤⣤⠤⠴⠒⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+    Congrats! You found the HTML comment easter egg! 🎉
+    Pro tip: Check the console for more surprises...
 -->
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Explore the essence of Seattle with Seattle Doge, a curated experience inspired by the Emerald City."/>
-    <meta name="keywords" content="Seattle, doge, city vibe, Emerald City"/>
+    <meta name="description" content="such website, much Seattle vibes 🐕 Experience the Emerald City through dynamic topography and aesthetic gradients"/>
+    <meta name="keywords" content="Seattle, doge, gen-z, aesthetic, topography, gradients, meme, PNW, Emerald City, interactive"/>
     <meta name="author" content="Emerald Designs"/>
-    <title>Seattle Doge - Experience the Emerald City</title>
+    <meta name="theme-color" content="#FF6F61"/>
+    <meta property="og:title" content="SeattleDoge - such website, much aesthetic"/>
+    <meta property="og:description" content="A visual love letter to Seattle featuring dynamic topography and doge vibes"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://SeattleDoge.com"/>
+    <title>SeattleDoge - such website, much aesthetic 🐕</title>
     <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/png"/>
+    <link rel="apple-touch-icon" href="favicon.png"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css"/>
     <script src="script.js" defer></script>
-    <!-- Analytics -->
-    <script defer src="https://umami.manaiakalani.info/script.js" data-website-id="a5b86f4f-759a-436e-8871-dae4af88ac99"></script>
 </head>
 <body>
     <div id="app" class="container">
         <header class="header">
-            <h1 class="title gradient-text">Seattle Doge</h1>
-            <p class="description gradient-text">Dive into the spirit of the Emerald City with Seattle Doge.</p>
+            <h1 class="title gradient-text" id="main-title">Seattle Doge</h1>
+            <p class="description gradient-text">such website, much Seattle vibes 🐕</p>
+            <div class="interaction-hint">
+                <span class="hint-text">✨ click me for surprises ✨</span>
+            </div>
         </header>
-        <div class="topography-box"></div> 
+        <div class="topography-box" id="topo-bg"></div> 
+        
+        <!-- Hidden easter egg counter -->
+        <div class="easter-egg-counter" id="egg-counter">
+            <span>🥚 <span id="egg-count">0</span>/5</span>
+        </div>
     </div>
 
     <footer class="footer">
         <div class="social-media">
-            <a href="https://aka.ms/MaxStein" class="social-link" aria-label="Twitter">
+            <a href="https://aka.ms/MaxStein" class="social-link bounce-on-hover" aria-label="Twitter" data-tooltip="follow for updates fr 📱">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a href="https://linkedin.com/in/manaiakalani" class="social-link" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/manaiakalani" class="social-link bounce-on-hover" aria-label="LinkedIn" data-tooltip="let's connect! 🤝">
                 <i class="fab fa-linkedin"></i>
             </a>
         </div>
         <p class="footer-text">© 2025 Seattle Doge</p>
-        <p class="footer-text">Made with ♥️ in Seattle, WA</p>
+        <p class="footer-text">Made with ❤️ in Seattle, WA | <span class="easter-egg-trigger" id="coffee-counter">☕ 0 cups</span></p>
     </footer>
 
     <svg class="svg-filters" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
