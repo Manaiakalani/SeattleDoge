@@ -115,10 +115,10 @@ function setupCoffeeCounter() {
 // ── Konami Code Easter Egg (#4) → The Vibes page ──
 function setupKonamiCode() {
   let konamiBuffer = [];
-  const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+  const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
 
   document.addEventListener('keydown', (e) => {
-    konamiBuffer.push(e.keyCode);
+    konamiBuffer.push(e.key);
     if (konamiBuffer.length > konami.length) konamiBuffer.shift();
 
     if (konamiBuffer.join(',') === konami.join(',')) {
@@ -161,6 +161,20 @@ function setupSocialGlow() {
   });
 }
 
+// ── Scroll-Triggered Roadmap Animations ──
+function setupScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.roadmap-item').forEach(item => observer.observe(item));
+}
+
 // ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
@@ -170,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTimeBasedEgg();
   setupSurpriseButton();
   setupSocialGlow();
+  setupScrollAnimations();
 
   // Mark console egg as found
   discovered.console = true;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#1a1b26"/>
+    <title>404 — much lost, very 404 🐕</title>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #1a1b26;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+        }
+        .code {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(6rem, 20vw, 12rem);
+            line-height: 1;
+            background: linear-gradient(to right, #6b8cce, #f47f78, #f5d547);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .msg {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+        .sub {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .doge { font-size: 4rem; margin-bottom: 1.5rem; }
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border: 1px solid rgba(245, 213, 71, 0.3);
+            border-radius: 9999px;
+            background: rgba(36, 40, 59, 0.6);
+            color: #f5d547;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .home-link:hover {
+            border-color: #f5d547;
+            box-shadow: 0 0 20px rgba(245, 213, 71, 0.15);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="doge">🐕</div>
+    <div class="code">404</div>
+    <p class="msg">much lost, very 404</p>
+    <p class="sub">this page doesn't exist. such empty, wow.</p>
+    <a href="/" class="home-link">✨ back to doge ✨</a>
+</body>
+</html>
