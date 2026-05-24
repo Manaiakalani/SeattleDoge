@@ -26,6 +26,8 @@ function showPage(pageId) {
     page.classList.add('active');
     window.scrollTo(0, 0);
   }
+
+  if (pageId === 'roadmap') launchRocket();
 }
 
 function setupNavigation() {
@@ -173,6 +175,27 @@ function setupScrollAnimations() {
   }, { threshold: 0.2 });
 
   document.querySelectorAll('.roadmap-item').forEach(item => observer.observe(item));
+}
+
+// ── Rocket Launch Animation ──
+function launchRocket() {
+  const rocket = document.querySelector('.roadmap-rocket');
+  const moon = document.querySelector('.roadmap-moon');
+  if (!rocket || !moon) return;
+
+  // Reset classes for re-triggering
+  rocket.classList.remove('launched');
+  moon.classList.remove('arrived');
+
+  // Small delay so page transition finishes first
+  setTimeout(() => {
+    rocket.classList.add('launched');
+
+    // Moon appears when rocket reaches the top
+    setTimeout(() => {
+      moon.classList.add('arrived');
+    }, 2200);
+  }, 300);
 }
 
 // ── Init ──
