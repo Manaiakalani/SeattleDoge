@@ -160,6 +160,7 @@ html, body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 24px rgba(107,140,206,0.2));
+  display: inline-block;
 }
 .gradient-doge {
   background: linear-gradient(to top right, #5274bd, #7a99db, #e2ebff);
@@ -167,6 +168,7 @@ html, body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 24px rgba(82,116,189,0.3));
+  display: inline-block;
 }
 
 .tagline {
@@ -714,6 +716,7 @@ html, body {
   50%      { transform: translateY(-10px); }
 }
 .animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float:hover { animation-play-state: paused; }
 
 @keyframes doge-float {
   0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
