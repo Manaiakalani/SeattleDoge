@@ -43,10 +43,18 @@
     <meta property="og:title" content="SeattleDoge - such website, much aesthetic"/>
     <meta property="og:description" content="A visual love letter to Seattle featuring dynamic topography and doge vibes"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://SeattleDoge.com"/>
+    <meta property="og:url" content="https://manaiakalani.github.io/SeattleDoge/"/>
+    <meta property="og:image" content="https://manaiakalani.github.io/SeattleDoge/favicon.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@manaiakalani"/>
+    <meta name="twitter:title" content="SeattleDoge - such website, much aesthetic 🐕"/>
+    <meta name="twitter:description" content="A visual love letter to Seattle featuring dynamic topography and doge vibes"/>
+    <meta name="twitter:image" content="https://manaiakalani.github.io/SeattleDoge/favicon.png"/>
     <title>SeattleDoge - such website, much aesthetic 🐕</title>
     <link rel="icon" href="favicon.png" type="image/png"/>
     <link rel="apple-touch-icon" href="favicon.png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"/>
     <script src="script.js" defer></script>
@@ -57,6 +65,8 @@
     ></script>
 </head>
 <body>
+    <a href="#page-landing" class="skip-link">Skip to content</a>
+
     <!-- ===== SHARED BACKGROUND LAYER ===== -->
     <div class="topo-bg" aria-hidden="true"></div>
     <div class="ambient-orb orb-1" aria-hidden="true"></div>
@@ -65,7 +75,7 @@
     <!-- ===== PROGRESS BADGE ===== -->
     <div class="progress-badge" id="progress-badge">
         <span class="ping-dot"><span class="ping-ring"></span><span class="ping-core"></span></span>
-        <span class="progress-text" id="egg-count">1/5</span>
+        <span class="progress-text" id="egg-count" aria-live="polite">1/5</span>
     </div>
 
     <!-- ===== PAGE 1: LANDING ===== -->
@@ -87,7 +97,7 @@
                 <div class="cta-area">
                     <button class="cta-btn" id="surprise-btn">
                         <span class="cta-sparkle">✨</span>
-                        <span class="cta-label" id="surprise-label">click me for surprises</span>
+                        <span class="cta-label" id="surprise-label" role="status">click me for surprises</span>
                         <span class="cta-sparkle">✨</span>
                     </button>
                 </div>
