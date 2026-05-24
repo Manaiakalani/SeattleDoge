@@ -1,43 +1,67 @@
 /*
  * SeattleDoge JavaScript 🐕
  * such interactive, much wow, very Gen-Z
- * Features: Easter eggs, animations, and Seattle vibes
+ * Features: Page routing, easter eggs, animations, and Seattle vibes
  */
 
-// State management for easter eggs
+// ── State ──
 let easterEggCount = 0;
 let coffeeCount = 0;
 const maxEasterEggs = 5;
+const discovered = { console: false, title: false, coffee: false, konami: false, patience: false };
 
-// Dynamic topography randomization
-function randomizeTurbulence() {
-    const turbulence = document.getElementById('turbulence');
-    if (!turbulence) return;
-    
-    const baseFrequencyX = (Math.random() * 0.02 + 0.002).toFixed(4);
-    const baseFrequencyY = (Math.random() * 0.02 + 0.002).toFixed(4);
-    const numOctaves = Math.floor(Math.random() * 3) + 1; 
-    const seed = Math.floor(Math.random() * 1000);
-    
-    turbulence.setAttribute('baseFrequency', `${baseFrequencyX} ${baseFrequencyY}`);
-    turbulence.setAttribute('numOctaves', numOctaves);
-    turbulence.setAttribute('seed', seed);
-    
-    // Add some flair when pattern changes
-    document.body.style.transition = 'all 0.5s ease';
-    setTimeout(() => {
-        document.body.style.transition = '';
-    }, 500);
+const surprises = [
+  '🐶 wow, much click!',
+  '🌧️ such Seattle rain, very mist!',
+  '☕ many coffee, much espresso!',
+  '🚀 to the moon, doge!',
+  '🐾 woof woof, very surprise!',
+];
+
+// ── Page Routing ──
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + pageId);
+  if (page) {
+    page.classList.add('active');
+    window.scrollTo(0, 0);
+  }
 }
 
-// Initialize on load
-randomizeTurbulence();
+function setupNavigation() {
+  document.querySelectorAll('[data-goto]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showPage(btn.getAttribute('data-goto'));
+    });
+  });
+}
 
-// Randomize every hour (3600000ms) + add some variance for personality
-const randomInterval = 3600000 + (Math.random() * 600000); // ±5 minutes
-setInterval(randomizeTurbulence, randomInterval);
+// ── Easter Egg Counter ──
+function updateCounter() {
+  const el = document.getElementById('egg-count');
+  if (el) el.textContent = easterEggCount + '/5';
+}
 
-// Doge ASCII Art
+function discoverEgg(key, message, pageTo) {
+  if (discovered[key]) return;
+  discovered[key] = true;
+  easterEggCount++;
+  updateCounter();
+  console.log('%c' + message, 'color: #f5d547; font-size: 14px; font-weight: bold;');
+
+  if (pageTo) {
+    setTimeout(() => showPage(pageTo), 400);
+  }
+
+  if (easterEggCount >= maxEasterEggs) {
+    setTimeout(() => {
+      console.log('%c🏆 ACHIEVEMENT UNLOCKED: Doggo Hunter! 🏆', 'color: gold; font-size: 20px; font-weight: bold;');
+      alert('🎉 Congrats! You found all easter eggs! You\'re officially a SeattleDoge doggo! 🐕');
+    }, 800);
+  }
+}
+
+// ── Console Easter Egg (#1) ──
 console.log(`
 %c
              ██▄▄▄▄▄▄▄▄▄   
@@ -50,177 +74,114 @@ console.log(`
         such art
         much console
         wow
-`, 'color: #FF6F61; font-family: monospace; font-size: 12px;');
+`, 'color: #f47f78; font-family: monospace; font-size: 12px;');
 
-console.log('%c🐕 SeattleDoge Console Easter Egg Unlocked! 🎉', 'color: #ffeb3b; font-size: 16px; font-weight: bold;');
-console.log('%cYou found the first easter egg! Keep exploring...', 'color: #0F4C81; font-size: 12px;');
+console.log('%c🐕 SeattleDoge Console Easter Egg Unlocked! 🎉', 'color: #f5d547; font-size: 16px; font-weight: bold;');
+console.log('%cYou found the first easter egg! Keep exploring...', 'color: #6b8cce; font-size: 12px;');
 
-// Interactive easter eggs
-function updateEasterEggCounter() {
-    const counter = document.getElementById('egg-count');
-    const eggCounter = document.getElementById('egg-counter');
-    
-    if (counter) {
-        counter.textContent = easterEggCount;
-        eggCounter.classList.add('show');
-        
-        if (easterEggCount >= maxEasterEggs) {
-            setTimeout(() => {
-                alert('🎉 Congrats! You found all easter eggs! You\'re officially a SeattleDoge doggo! 🐕');
-                console.log('%c🏆 ACHIEVEMENT UNLOCKED: Doggo Hunter! 🏆', 'color: gold; font-size: 20px; font-weight: bold;');
-            }, 500);
-        }
-    }
-}
-
-// Title click easter egg
+// ── Title Click Easter Egg (#2) → Doge Found page ──
 function setupTitleInteraction() {
-    const title = document.getElementById('main-title');
-    if (title) {
-        title.addEventListener('click', () => {
-            if (easterEggCount === 0) {
-                easterEggCount++;
-                updateEasterEggCounter();
-                console.log('%c🎯 Easter egg #1 found! Keep clicking around...', 'color: #FF6F61;');
-            }
-            
-            // Add some visual feedback
-            title.style.animation = 'shake 0.5s ease-in-out';
-            setTimeout(() => {
-                title.style.animation = '';
-            }, 500);
-        });
-    }
+  const titles = document.querySelectorAll('.hero-title');
+  titles.forEach(title => {
+    title.addEventListener('click', () => {
+      title.style.animation = 'shake 0.5s ease-in-out';
+      setTimeout(() => { title.style.animation = ''; }, 500);
+
+      discoverEgg('title', '🎯 Easter egg #2: Title clicked! Doge found!', 'doge');
+    });
+  });
 }
 
-// Coffee counter easter egg
+// ── Coffee Counter Easter Egg (#3) → The City page ──
 function setupCoffeeCounter() {
-    const coffeeCounter = document.getElementById('coffee-counter');
-    if (coffeeCounter) {
-        coffeeCounter.addEventListener('click', () => {
-            coffeeCount++;
-            coffeeCounter.textContent = `☕ ${coffeeCount} cups`;
-            
-            if (coffeeCount === 5 && easterEggCount < maxEasterEggs) {
-                easterEggCount++;
-                updateEasterEggCounter();
-                console.log('%c☕ Coffee addiction easter egg unlocked! true Seattle vibes', 'color: #8B4513;');
-            }
-            
-            if (coffeeCount >= 10) {
-                coffeeCounter.textContent = '☕ too much caffeine 😵';
-                setTimeout(() => {
-                    coffeeCounter.textContent = `☕ ${coffeeCount} cups`;
-                }, 2000);
-            }
-        });
+  const counter = document.getElementById('coffee-counter');
+  if (!counter) return;
+
+  counter.addEventListener('click', () => {
+    coffeeCount++;
+    counter.textContent = coffeeCount + ' cups';
+
+    if (coffeeCount === 5) {
+      discoverEgg('coffee', '☕ Easter egg #3: Coffee addiction unlocked! true Seattle vibes', 'city');
     }
+
+    if (coffeeCount >= 10) {
+      counter.textContent = 'too much caffeine 😵';
+      setTimeout(() => { counter.textContent = coffeeCount + ' cups'; }, 2000);
+    }
+  });
 }
 
-// Background click easter egg
-function setupBackgroundInteraction() {
-    const topoBackground = document.getElementById('topo-bg');
-    if (topoBackground) {
-        let clickCount = 0;
-        topoBackground.addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 3 && easterEggCount < maxEasterEggs) {
-                easterEggCount++;
-                updateEasterEggCounter();
-                randomizeTurbulence(); // Change pattern as reward
-                console.log('%c🌄 Background pattern easter egg! The mountains are dancing!', 'color: #939597;');
-            }
-        });
-    }
-}
-
-// Konami code easter egg (because why not)
+// ── Konami Code Easter Egg (#4) → The Vibes page ──
 function setupKonamiCode() {
-    let konamiCode = [];
-    const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
-    
-    document.addEventListener('keydown', (e) => {
-        konamiCode.push(e.keyCode);
-        if (konamiCode.length > konami.length) {
-            konamiCode.shift();
-        }
-        
-        if (konamiCode.join('') === konami.join('') && easterEggCount < maxEasterEggs) {
-            easterEggCount++;
-            updateEasterEggCounter();
-            document.body.style.animation = 'spin 2s ease-in-out';
-            setTimeout(() => {
-                document.body.style.animation = '';
-            }, 2000);
-            console.log('%c🎮 Konami Code easter egg! Such nostalgia, much wow!', 'color: #6667AB;');
-        }
-    });
+  let konamiBuffer = [];
+  const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+  document.addEventListener('keydown', (e) => {
+    konamiBuffer.push(e.keyCode);
+    if (konamiBuffer.length > konami.length) konamiBuffer.shift();
+
+    if (konamiBuffer.join(',') === konami.join(',')) {
+      document.body.style.animation = 'spin 2s ease-in-out';
+      setTimeout(() => { document.body.style.animation = ''; }, 2000);
+      discoverEgg('konami', '🎮 Easter egg #4: Konami Code! Such nostalgia, much wow!', 'vibes');
+    }
+  });
 }
 
-// Time-based easter egg (for the patient ones)
+// ── Time-Based Easter Egg (#5) → Roadmap page ──
 function setupTimeBasedEgg() {
-    setTimeout(() => {
-        if (easterEggCount < maxEasterEggs) {
-            easterEggCount++;
-            updateEasterEggCounter();
-            console.log('%c⏰ Patience easter egg unlocked! You stayed for 30 seconds!', 'color: #0F4C81;');
-        }
-    }, 30000); // 30 seconds
+  setTimeout(() => {
+    discoverEgg('patience', '⏰ Easter egg #5: Patience unlocked! You stayed for 30 seconds!', 'roadmap');
+  }, 30000);
 }
 
-// Social link interaction enhancement
-function setupSocialInteractions() {
-    const socialLinks = document.querySelectorAll('.social-link');
-    socialLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            link.style.filter = 'drop-shadow(0 0 10px currentColor)';
-        });
-        
-        link.addEventListener('mouseleave', () => {
-            link.style.filter = '';
-        });
+// ── Surprise Button ──
+function setupSurpriseButton() {
+  const btn = document.getElementById('surprise-btn');
+  const label = document.getElementById('surprise-label');
+  if (!btn || !label) return;
+
+  btn.addEventListener('click', () => {
+    const msg = surprises[Math.floor(Math.random() * surprises.length)];
+    label.textContent = msg;
+    setTimeout(() => { label.textContent = 'click me for surprises'; }, 2000);
+  });
+}
+
+// ── Social Link Glow ──
+function setupSocialGlow() {
+  document.querySelectorAll('.social-icon').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.filter = 'drop-shadow(0 0 10px currentColor)';
     });
+    link.addEventListener('mouseleave', () => {
+      link.style.filter = '';
+    });
+  });
 }
 
-// Initialize all interactions when DOM is ready
+// ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
-    setupTitleInteraction();
-    setupCoffeeCounter();
-    setupBackgroundInteraction();
-    setupKonamiCode();
-    setupTimeBasedEgg();
-    setupSocialInteractions();
-    
-    // Initial console message for devs
-    console.log('%c👋 Hello fellow developer! Welcome to SeattleDoge!', 'color: #FF6F61; font-size: 14px;');
-    console.log('%cThere are 5 easter eggs hidden on this page. Can you find them all?', 'color: #0F4C81;');
-    console.log('%c1. Already found! (console doge)', 'color: #888;');
-    console.log('%c2. Try clicking the title...', 'color: #ffeb3b;');
-    console.log('%c3. Need more coffee? ☕', 'color: #ffeb3b;');
-    console.log('%c4. Click the background pattern...', 'color: #ffeb3b;');
-    console.log('%c5. Try the Konami code! ↑↑↓↓←→←→BA', 'color: #ffeb3b;');
-    console.log('%c6. BONUS: Just wait around for a bit...', 'color: #ffeb3b;');
-    
-    // Mark console easter egg as found
-    easterEggCount = 1;
-    updateEasterEggCounter();
-});
+  setupNavigation();
+  setupTitleInteraction();
+  setupCoffeeCounter();
+  setupKonamiCode();
+  setupTimeBasedEgg();
+  setupSurpriseButton();
+  setupSocialGlow();
 
-// Add some CSS animations via JavaScript for extra flair
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    
-    .easter-egg-counter {
-        animation: fadeIn 0.5s ease;
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-`;
-document.head.appendChild(style);
+  // Mark console egg as found
+  discovered.console = true;
+  easterEggCount = 1;
+  updateCounter();
+
+  // Dev hints
+  console.log('%c👋 Hello fellow developer! Welcome to SeattleDoge!', 'color: #f47f78; font-size: 14px;');
+  console.log('%cThere are 5 easter eggs hidden on this page. Can you find them all?', 'color: #6b8cce;');
+  console.log('%c1. ✅ Already found! (console doge)', 'color: #888;');
+  console.log('%c2. Try clicking the big title...', 'color: #f5d547;');
+  console.log('%c3. Need more coffee? ☕ (click it 5 times)', 'color: #f5d547;');
+  console.log('%c4. Try the Konami code! ↑↑↓↓←→←→BA', 'color: #f5d547;');
+  console.log('%c5. BONUS: Just wait around for a bit...', 'color: #f5d547;');
+});
