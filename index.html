@@ -39,101 +39,289 @@
     <meta name="description" content="such website, much Seattle vibes 🐕 Experience the Emerald City through dynamic topography and aesthetic gradients"/>
     <meta name="keywords" content="Seattle, doge, gen-z, aesthetic, topography, gradients, meme, PNW, Emerald City, interactive"/>
     <meta name="author" content="Emerald Designs"/>
-    <meta name="theme-color" content="#FF6F61"/>
+    <meta name="theme-color" content="#1a1b26"/>
     <meta property="og:title" content="SeattleDoge - such website, much aesthetic"/>
     <meta property="og:description" content="A visual love letter to Seattle featuring dynamic topography and doge vibes"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://SeattleDoge.com"/>
     <title>SeattleDoge - such website, much aesthetic 🐕</title>
-    <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/png"/>
     <link rel="apple-touch-icon" href="favicon.png"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"/>
     <script src="script.js" defer></script>
-    <!-- Analytics -->
     <script
-    src="https://analytics.manaiakalani.info/api/script.js"
-    data-site-id="94813d5453b5"
-    defer
+      src="https://analytics.manaiakalani.info/api/script.js"
+      data-site-id="94813d5453b5"
+      defer
     ></script>
 </head>
 <body>
-    <div id="app" class="container">
-        <header class="header">
-            <h1 class="title gradient-text" id="main-title">Seattle Doge</h1>
-            <p class="description gradient-text">such website, much Seattle vibes 🐕</p>
-            <div class="interaction-hint">
-                <span class="hint-text">✨ click me for surprises ✨</span>
-            </div>
-        </header>
-        <div class="topography-box" id="topo-bg"></div> 
-        
-        <!-- Hidden easter egg counter -->
-        <div class="easter-egg-counter" id="egg-counter">
-            <span>🥚 <span id="egg-count">0</span>/5</span>
-        </div>
+    <!-- ===== SHARED BACKGROUND LAYER ===== -->
+    <div class="topo-bg" aria-hidden="true"></div>
+    <div class="ambient-orb orb-1" aria-hidden="true"></div>
+    <div class="ambient-orb orb-2" aria-hidden="true"></div>
+
+    <!-- ===== PROGRESS BADGE ===== -->
+    <div class="progress-badge" id="progress-badge">
+        <span class="ping-dot"><span class="ping-ring"></span><span class="ping-core"></span></span>
+        <span class="progress-text" id="egg-count">1/5</span>
     </div>
 
-    <footer class="footer">
-        <div class="social-media">
-            <a href="https://twitter.com/manaiakalani" class="social-link bounce-on-hover" aria-label="Twitter" data-tooltip="follow for updates fr 📱">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/manaiakalani/" class="social-link bounce-on-hover" aria-label="LinkedIn" data-tooltip="let's connect! 🤝">
-                <i class="fab fa-linkedin"></i>
-            </a>
-        </div>
-        <p class="footer-text">© 2025 Seattle Doge</p>
-        <p class="footer-text">Made with ❤️ in Seattle, WA | <span class="easter-egg-trigger" id="coffee-counter">☕ 0 cups</span></p>
-    </footer>
+    <!-- ===== PAGE 1: LANDING ===== -->
+    <div class="page active" id="page-landing">
+        <main class="page-main landing-main">
+            <div class="landing-content animate-float">
+                <div class="landing-titles">
+                    <h1 class="hero-title">
+                        <span class="gradient-seattle">SEATTLE</span>
+                    </h1>
+                    <h1 class="hero-title hero-title-doge">
+                        <span class="gradient-doge">DOGE</span>
+                    </h1>
+                </div>
+                <div class="tagline">
+                    <span class="tagline-text">such website, much Seattle vibes</span>
+                    <span class="tagline-paw" title="woof">🐾</span>
+                </div>
+                <div class="cta-area">
+                    <button class="cta-btn" id="surprise-btn">
+                        <span class="cta-sparkle">✨</span>
+                        <span class="cta-label" id="surprise-label">click me for surprises</span>
+                        <span class="cta-sparkle">✨</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
 
-    <svg class="svg-filters" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-            <filter id="topography">
-                <feTurbulence id="turbulence" type="fractalNoise" baseFrequency="0.0033" numOctaves="1" />
-                <feColorMatrix type="saturate" values="0" result="noise" />
-                <feComponentTransfer in="noise" result="h1">
-                    <feFuncA type="table" tableValues="-220 100" />
-                </feComponentTransfer>
-                <feMorphology operator="dilate" radius="1" />
-                <feComposite in2="h1" result="a1" operator="out" />
-                <feComponentTransfer in="noise" result="h2">
-                    <feFuncA type="table" tableValues="-160 100" />
-                </feComponentTransfer>
-                <feMorphology operator="dilate" radius="1" />
-                <feComposite in2="h2" result="a2" operator="out" />
-                <feComponentTransfer in="noise" result="h3">
-                    <feFuncA type="table" tableValues="-120 100" />
-                </feComponentTransfer>
-                <feMorphology operator="dilate" radius="1" />
-                <feComposite in2="h3" result="a3" operator="out" />
-                <feComponentTransfer in="noise" result="h4">
-                    <feFuncA type="table" tableValues="-80 100" />
-                </feComponentTransfer>
-                <feMorphology operator="dilate" radius="1" />
-                <feComposite in2="h4" result="a4" operator="out" />
-                <feComponentTransfer in="noise" result="h5">
-                    <feFuncA type="table" tableValues="-50 100" />
-                </feComponentTransfer>
-                <feMorphology operator="dilate" radius="1" />
-                <feComposite in2="h5" result="a5" operator="out" />
-                <feComposite in="a1" in2="a2" result="c1" operator="over" />
-                <feComposite in="c1" in2="a3" result="c2" operator="over" />
-                <feComposite in="c2" in2="a4" result="c3" operator="over" />
-                <feComposite in="c3" in2="a5" result="c4" operator="over" />
-                <feComponentTransfer in="c4" result="c5">
-                    <feFuncR type="discrete" tableValues="0 1 0 1" />
-                    <feFuncG type="discrete" tableValues="0 1 0 1" />
-                    <feFuncB type="discrete" tableValues="0 1 0 1" />
-                    <feFuncA type="discrete" tableValues="0 1 0 1" />
-                </feComponentTransfer>
-                <feComposite in="SourceAlpha" in2="c5" operator="out" result="alpha" />
-                <feComposite in="SourceGraphic" operator="in" />
-            </filter>
-        </defs>
-    </svg>
+    <!-- ===== PAGE 2: DOGE FOUND ===== -->
+    <div class="page" id="page-doge">
+        <main class="page-main doge-main">
+            <div class="doge-scene">
+                <div class="doge-image-wrap animate-doge">
+                    <div class="doge-circle">
+                        <img
+                            src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
+                            alt="Much Seattle Doge"
+                            class="doge-img"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bubble bubble-1 animate-pop" style="animation-delay: 0.2s">much wow</div>
+                    <div class="bubble bubble-2 animate-pop" style="animation-delay: 0.6s">such surprise</div>
+                    <div class="bubble bubble-3 animate-pop" style="animation-delay: 1.0s">very click</div>
+                    <div class="bubble bubble-4 animate-pop" style="animation-delay: 1.4s">so Seattle</div>
+                </div>
+                <div class="doge-bg-text" aria-hidden="true">MUCH WOW</div>
+            </div>
+            <div class="doge-cta animate-pop" style="animation-delay: 1.8s">
+                <h3 class="doge-found-title"><span class="gradient-found">YOU FOUND IT!</span></h3>
+                <p class="doge-found-sub">The legendary Doge of the Pacific Northwest has appeared.</p>
+                <button class="back-btn" data-goto="landing">
+                    <svg class="back-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Go Back
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== PAGE 3: THE CITY ===== -->
+    <div class="page" id="page-city">
+        <main class="page-main city-main">
+            <header class="city-header">
+                <h2 class="section-title"><span class="gradient-city">THE CITY</span></h2>
+                <div class="section-accent"></div>
+            </header>
+            <div class="card-grid">
+                <!-- Space Needle -->
+                <div class="landmark-card">
+                    <div class="card-top">
+                        <div class="card-icon icon-glow-blue">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M11 2H13V4H11V2ZM11 5H13V18H11V5ZM7 8H17V10H19V12H17V13H7V12H5V10H7V8ZM9 10V11H15V10H9ZM10 18H14V22H10V18Z" fill="currentColor"/></svg>
+                        </div>
+                        <span class="card-number number-blue">01</span>
+                    </div>
+                    <h3 class="card-title title-blue">Space Needle</h3>
+                    <p class="card-desc">The 605-ft-tall icon of the Pacific Northwest. Built for the 1962 World's Fair, it offers such views, much height. A true monument to the future.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-blue">Queen Anne</span>
+                        <span class="tag tag-blue">Futurism</span>
+                    </div>
+                </div>
+                <!-- Pike Place -->
+                <div class="landmark-card">
+                    <div class="card-top">
+                        <div class="card-icon icon-glow-yellow">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M3 5H21V7H19V21H5V7H3V5ZM7 7V19H17V7H7ZM9 9H15V11H9V9ZM9 13H15V15H9V13Z" fill="currentColor"/><path d="M10 2H14V4H10V2Z" fill="currentColor"/></svg>
+                        </div>
+                        <span class="card-number number-yellow">02</span>
+                    </div>
+                    <h3 class="card-title title-yellow">Pike Place</h3>
+                    <p class="card-desc">Fresh fish, flying salmon, and the original Starbucks. Established in 1907, it's the soul of the city. Very market, many flowers, wow.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-yellow">Downtown</span>
+                        <span class="tag tag-yellow">History</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-back">
+                <button class="back-link" data-goto="landing">
+                    <span class="back-arrow">←</span>
+                    <span>Return to Doge</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== PAGE 4: THE VIBES ===== -->
+    <div class="page" id="page-vibes">
+        <main class="page-main city-main">
+            <header class="city-header">
+                <h2 class="section-title"><span class="gradient-vibes">THE VIBES</span></h2>
+                <div class="section-accent accent-purple"></div>
+            </header>
+            <div class="card-grid card-grid-3">
+                <!-- Rain -->
+                <div class="landmark-card">
+                    <div class="card-top">
+                        <div class="card-icon icon-glow-blue">
+                            <span style="font-size:2.5rem">🌧️</span>
+                        </div>
+                        <span class="card-number number-blue">01</span>
+                    </div>
+                    <h3 class="card-title title-blue">Such Rain</h3>
+                    <p class="card-desc">152 rainy days per year. Much drizzle, very mist. Seattleites don't use umbrellas — they simply become one with the cloud.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-blue">Weather</span>
+                        <span class="tag tag-blue">Vibes</span>
+                    </div>
+                </div>
+                <!-- Coffee -->
+                <div class="landmark-card">
+                    <div class="card-top">
+                        <div class="card-icon icon-glow-yellow">
+                            <span style="font-size:2.5rem">☕</span>
+                        </div>
+                        <span class="card-number number-yellow">02</span>
+                    </div>
+                    <h3 class="card-title title-yellow">Many Coffee</h3>
+                    <p class="card-desc">Birthplace of Starbucks, home to 35+ roasters. Every corner has a café. Very espresso, much latte art, so caffeinated.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-yellow">Culture</span>
+                        <span class="tag tag-yellow">Caffeine</span>
+                    </div>
+                </div>
+                <!-- Tech -->
+                <div class="landmark-card">
+                    <div class="card-top">
+                        <div class="card-icon icon-glow-coral">
+                            <span style="font-size:2.5rem">💻</span>
+                        </div>
+                        <span class="card-number number-coral">03</span>
+                    </div>
+                    <h3 class="card-title title-coral">Very Tech</h3>
+                    <p class="card-desc">Home to Amazon, Microsoft, and countless startups. Much innovation, such disruption. The cloud isn't just in the sky here.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-coral">Industry</span>
+                        <span class="tag tag-coral">Future</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-back">
+                <button class="back-link" data-goto="landing">
+                    <span class="back-arrow">←</span>
+                    <span>Return to Doge</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== PAGE 5: ROADMAP ===== -->
+    <div class="page" id="page-roadmap">
+        <main class="page-main roadmap-main">
+            <div class="roadmap-header">
+                <h2 class="section-title section-title-lg"><span class="gradient-roadmap">SUCH ROADMAP</span></h2>
+                <p class="roadmap-sub">very future, much wow, so progress</p>
+            </div>
+            <div class="roadmap-track">
+                <div class="roadmap-line" aria-hidden="true"></div>
+                <!-- Item 1 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-side roadmap-side-left">
+                        <span class="roadmap-status status-blue">Past Much Done</span>
+                    </div>
+                    <div class="roadmap-dot dot-blue"></div>
+                    <div class="roadmap-side roadmap-side-right">
+                        <h4 class="roadmap-title">Very Launch</h4>
+                        <p class="roadmap-desc">Much deploy. Website wow. Seattle vibes intensifies.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-side roadmap-side-left">
+                        <h4 class="roadmap-title">So Coffee</h4>
+                        <p class="roadmap-desc">Many beans. Dark roast power. 1000 cups goal.</p>
+                    </div>
+                    <div class="roadmap-dot dot-purple"></div>
+                    <div class="roadmap-side roadmap-side-right">
+                        <span class="roadmap-status status-purple">Active Working</span>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-side roadmap-side-left">
+                        <span class="roadmap-status status-coral">Soon™</span>
+                    </div>
+                    <div class="roadmap-dot dot-coral animate-pulse"></div>
+                    <div class="roadmap-side roadmap-side-right">
+                        <h4 class="roadmap-title">Much Space</h4>
+                        <p class="roadmap-desc">To the moon. Doge in orbit. Many stars, so shine.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="roadmap-item roadmap-item-dim">
+                    <div class="roadmap-side roadmap-side-left">
+                        <h4 class="roadmap-title">Infinite Bark</h4>
+                        <p class="roadmap-desc">Global adoption. Every cup is Doge cup. Wow.</p>
+                    </div>
+                    <div class="roadmap-dot dot-gold"></div>
+                    <div class="roadmap-side roadmap-side-right">
+                        <span class="roadmap-status status-gold">Future Dream</span>
+                    </div>
+                </div>
+            </div>
+            <div class="roadmap-back">
+                <button class="back-btn-outline" data-goto="landing">
+                    <svg class="back-icon rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    Back to Start
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== FOOTER (shared) ===== -->
+    <footer class="site-footer" id="site-footer">
+        <div class="footer-gradient-bar"></div>
+        <div class="footer-content">
+            <div class="footer-wash" aria-hidden="true"></div>
+            <div class="footer-socials">
+                <a href="https://twitter.com/manaiakalani" class="social-icon" aria-label="Twitter" data-tooltip="follow for updates fr 📱">
+                    <svg class="icon-svg" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/manaiakalani/" class="social-icon" aria-label="LinkedIn" data-tooltip="let's connect! 🤝">
+                    <svg class="icon-svg" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                </a>
+            </div>
+            <div class="footer-copy">© 2025 Seattle Doge</div>
+            <div class="footer-made">
+                <span>Made with</span>
+                <span class="heart animate-pulse">💖</span>
+                <span>in Seattle, WA |</span>
+                <span class="coffee-icon">☕</span>
+                <span class="coffee-counter" id="coffee-counter">0 cups</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
