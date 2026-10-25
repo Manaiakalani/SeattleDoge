@@ -2,13 +2,15 @@
 
 > *such website, much Seattle, very aesthetic* ✨
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://manaiakalani.github.io/SeattleDoge/)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://seattledoge.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Made with](https://img.shields.io/badge/Made%20with-💖-red)](https://github.com/Manaiakalani/SeattleDoge)
 
 ## 🌟 What's This All About?
 
 SeattleDoge is a visual love letter to the Emerald City, combining the internet's favorite meme dog with Seattle's iconic vibe. It's a 5-page interactive web experience featuring a Tokyo Night design system, dynamic topographic patterns, smooth gradients, and 5 hidden easter eggs to discover.
+
+![Seattle Doge landing page](docs/screenshot.png)
 
 ### ✨ Features That Actually Slap
 - 🎨 **Tokyo Night Design System**: SVG topographic background, ambient orbs, Syne & Space Grotesk typography
@@ -63,7 +65,7 @@ There are **5 easter eggs** hidden throughout the site. Each one unlocks a new p
 
 - 🐦 [Twitter](https://twitter.com/manaiakalani) - Updates and Seattle tech vibes
 - 💼 [LinkedIn](https://linkedin.com/in/manaiakalani) - Professional networking
-- 🌐 [Live Site](https://manaiakalani.github.io/SeattleDoge/) - See it in action
+- 🌐 [Live Site](https://seattledoge.com/) - See it in action
 
 ## 📊 Project Stats
 
